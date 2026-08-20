@@ -1,0 +1,6 @@
+@for (announcement of announcements(); track announcement.documentId) {
+  <div class="banner" [class]="'banner severity-' + announcement.severity">
+    <strong>{{ announcement.title }}</strong>
+    <span>{{ announcement.message }}</span>
+  </div>
+}

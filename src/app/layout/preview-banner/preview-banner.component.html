@@ -1,0 +1,9 @@
+<div
+  class="preview-banner"
+  [class.is-draft]="isDraft() && hasSecret()"
+  [class.is-incomplete]="!hasSecret()"
+  role="status"
+>
+  <strong class="preview-label">{{ label() }}</strong>
+  <span class="preview-message">{{ message() }}</span>
+</div>

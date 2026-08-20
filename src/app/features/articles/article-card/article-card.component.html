@@ -1,0 +1,28 @@
+<a class="card" [routerLink]="['/article', article().slug]">
+  @if (coverUrl(); as cover) {
+    <img class="card-cover" [src]="cover" [alt]="article().cover?.alternativeText || article().title" />
+  }
+
+  <div class="card-body">
+    <div class="card-categories">
+      @for (category of article().categories; track category.id) {
+        <span class="chip">{{ category.name }}</span>
+      }
+    </div>
+
+    <h2 class="card-title">{{ article().title }}</h2>
+
+    @if (article().excerpt; as excerpt) {
+      <p class="card-excerpt">{{ excerpt }}</p>
+    }
+
+    <div class="card-meta">
+      @if (article().author; as author) {
+        <span class="card-author">{{ author.name }}</span>
+      }
+      @if (article().publishedAt; as publishedAt) {
+        <time class="card-date">{{ publishedAt | date: 'mediumDate' }}</time>
+      }
+    </div>
+  </div>
+</a>

@@ -1,0 +1,37 @@
+@if (global(); as globalContent) {
+  <section class="hero">
+    <h1>{{ globalContent.siteName }}</h1>
+
+    @if (globalContent.tagline; as tagline) {
+      <p class="hero-tagline">{{ tagline }}</p>
+    }
+
+    @if (globalContent.heroText; as heroText) {
+      <p class="hero-text">{{ heroText }}</p>
+    }
+
+    <p class="hero-note">
+      Everything on this page, including the site name above, comes from the Global single type in Strapi.
+    </p>
+  </section>
+} @else {
+  <p class="empty-state">Could not load site information. Is Strapi running?</p>
+}
+
+<section class="authors">
+  <h2>The authors</h2>
+
+  <div class="author-grid">
+    @for (author of authors(); track author.documentId) {
+      <div class="author-card">
+        @if (avatarUrl(author.avatar); as avatar) {
+          <img class="author-avatar" [src]="avatar" [alt]="author.name" />
+        }
+        <h3>{{ author.name }}</h3>
+        @if (author.bio; as bio) {
+          <p>{{ bio }}</p>
+        }
+      </div>
+    }
+  </div>
+</section>

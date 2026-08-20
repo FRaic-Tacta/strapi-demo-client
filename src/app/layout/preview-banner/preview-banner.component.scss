@@ -1,0 +1,38 @@
+.preview-banner {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px dashed var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  font-size: 0.9375rem;
+}
+
+.preview-label {
+  white-space: nowrap;
+}
+
+.preview-message {
+  color: var(--text-muted);
+}
+
+.is-draft {
+  border-color: var(--warning);
+  background: #fffbeb;
+
+  .preview-label {
+    color: var(--warning);
+  }
+}
+
+.is-incomplete {
+  border-color: var(--critical);
+  background: #fef2f2;
+
+  .preview-label {
+    color: var(--critical);
+  }
+}

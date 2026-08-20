@@ -1,0 +1,144 @@
+:host {
+  display: block;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  font-size: 0.9375rem;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.article-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  padding: 0.125rem 0.625rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-graphql {
+  background: #fdf2f8;
+  color: #e10098;
+}
+
+.article-header h1 {
+  margin: 0 0 1rem;
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+.article-byline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.byline-avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.byline-name {
+  display: block;
+  font-weight: 600;
+}
+
+.byline-date {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+.article-cover {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-content p {
+  margin: 0 0 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.article-blocks {
+  margin-top: 0.5rem;
+}
+
+.block-quote {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: var(--accent-soft);
+
+  p {
+    margin: 0 0 0.5rem;
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  cite {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-style: normal;
+  }
+}
+
+.block-code {
+  margin: 0 0 1.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  figcaption {
+    padding: 0.375rem 1rem;
+    background: #0f172a;
+    color: #94a3b8;
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  pre {
+    margin: 0;
+    padding: 1rem;
+    background: #1e293b;
+    overflow-x: auto;
+
+    code {
+      color: #e2e8f0;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+.empty-state {
+  padding: 3rem 1rem;
+  border: 1px dashed var(--border-color);
+  border-radius: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}

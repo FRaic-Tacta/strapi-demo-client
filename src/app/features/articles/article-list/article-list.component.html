@@ -1,0 +1,55 @@
+<section class="list-header">
+  <h1>Articles</h1>
+  <p class="list-subtitle">Fetched from Strapi over the REST API</p>
+</section>
+
+<nav class="category-filters" aria-label="Filter by category">
+  <button
+    type="button"
+    class="category-all"
+    [class.active]="!activeCategory()"
+    (click)="selectCategory(undefined)"
+  >
+    All
+  </button>
+
+  @for (category of categories(); track category.id) {
+    <button
+      type="button"
+      class="category-filter"
+      [class.active]="activeCategory() === category.slug"
+      (click)="selectCategory(category.slug)"
+    >
+      {{ category.name }}
+    </button>
+  }
+</nav>
+
+@if (loadFailed()) {
+  <p class="empty-state">No articles yet. Is Strapi running?</p>
+} @else if (articles().length === 0) {
+  <p class="empty-state">No articles found for this filter.</p>
+} @else {
+  <div class="article-grid">
+    @for (article of articles(); track article.documentId) {
+      <app-article-card [article]="article" />
+    }
+  </div>
+}
+
+@if (pageCount() > 1) {
+  <nav class="pagination" aria-label="Pagination">
+    <button type="button" class="page-prev" [disabled]="page() <= 1" (click)="goToPage(page() - 1)">
+      Previous
+    </button>
+    <span class="page-indicator">Page {{ page() }} of {{ pageCount() }}</span>
+    <button
+      type="button"
+      class="page-next"
+      [disabled]="page() >= pageCount()"
+      (click)="goToPage(page() + 1)"
+    >
+      Next
+    </button>
+  </nav>
+}

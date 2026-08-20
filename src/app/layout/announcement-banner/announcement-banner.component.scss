@@ -1,0 +1,24 @@
+.banner {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  padding: 0.625rem 1.5rem;
+  color: #ffffff;
+  font-size: 0.9375rem;
+
+  strong {
+    white-space: nowrap;
+  }
+}
+
+.severity-info {
+  background: var(--info);
+}
+
+.severity-warning {
+  background: var(--warning);
+}
+
+.severity-critical {
+  background: var(--critical);
+}

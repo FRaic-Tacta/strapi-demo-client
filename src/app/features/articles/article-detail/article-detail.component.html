@@ -1,0 +1,73 @@
+@if (preview(); as previewRequest) {
+  <app-preview-banner [preview]="previewRequest" />
+} @else {
+  <a class="back-link" routerLink="/">&larr; Back to articles</a>
+}
+
+@if (article(); as currentArticle) {
+  <article class="article">
+    <header class="article-header">
+      <div class="article-badges">
+        <span class="badge badge-graphql" title="This page is loaded with Apollo through the Strapi GraphQL plugin">
+          Fetched via GraphQL
+        </span>
+        @for (category of currentArticle.categories; track category.slug) {
+          <span class="badge">{{ category.name }}</span>
+        }
+      </div>
+
+      <h1>{{ currentArticle.title }}</h1>
+
+      <div class="article-byline">
+        @if (avatarUrl(); as avatar) {
+          <img class="byline-avatar" [src]="avatar" [alt]="currentArticle.author?.name ?? ''" />
+        }
+        <div>
+          @if (currentArticle.author; as author) {
+            <span class="byline-name">{{ author.name }}</span>
+          }
+          @if (currentArticle.publishedAt; as publishedAt) {
+            <time class="byline-date">{{ publishedAt | date: 'longDate' }}</time>
+          }
+        </div>
+      </div>
+    </header>
+
+    @if (coverUrl(); as cover) {
+      <img class="article-cover" [src]="cover" [alt]="currentArticle.cover?.alternativeText || currentArticle.title" />
+    }
+
+    <div class="article-content">
+      @for (paragraph of paragraphs(); track $index) {
+        <p>{{ paragraph }}</p>
+      }
+    </div>
+
+    @if (blocks().length > 0) {
+      <div class="article-blocks">
+        @for (block of blocks(); track $index) {
+          @switch (block.__typename) {
+            @case ('ComponentSharedQuote') {
+              <blockquote class="block-quote">
+                <p>{{ block.text }}</p>
+                @if (block.author; as quoteAuthor) {
+                  <cite>{{ quoteAuthor }}</cite>
+                }
+              </blockquote>
+            }
+            @case ('ComponentSharedCodeBlock') {
+              <figure class="block-code">
+                @if (block.language; as language) {
+                  <figcaption>{{ language }}</figcaption>
+                }
+                <pre><code>{{ block.code }}</code></pre>
+              </figure>
+            }
+          }
+        }
+      </div>
+    }
+  </article>
+} @else if (loaded()) {
+  <p class="empty-state">Article not found.</p>
+}
